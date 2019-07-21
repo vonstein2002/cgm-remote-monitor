@@ -37,6 +37,10 @@ function create(env, ctx) {
             },
             frameguard: false
           }));
+           		app.use(helmet.frameguard({ //Override for two-up monitor
+                action: 'allow-from',
+                domain: 'http://monitor.nightscout.info'
+        }))
           if (env.secureCsp) {
             var secureCspReportOnly= env.secureCspReportOnly;
             if (secureCspReportOnly) {
